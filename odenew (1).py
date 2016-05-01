@@ -10,6 +10,7 @@ from scipy import array
 import numpy
 from pylab import *
 from scipy.integrate import quad
+import matplotlib.pyplot as plt
 def deriv(y,t):
     U=100
     P=1
@@ -20,32 +21,32 @@ def deriv(y,t):
     return array([-U*P/(mA*(4000+10*y[0]+10**(-2)*y[0]**2))*(y[0]-y[1]) , -U*P/(mB*(3000+5*y[1]+2*10**(-2)*y[1]**2))*(y[0]-y[1])])
 
 ### FOR N=10
-a1=320
-t=linspace(0.0,9.0,10)
+a1=307
+t=linspace(0.0,10.0,11)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[9,1]-300
+F1=y[10,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,10)
+a2=308
+t=linspace(0.0,10.0,11)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[9,1]-300
+F2=y[10,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,10)
+    t=linspace(0.0,10.0,11)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[9,1]-300
+    F3=y[10,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[9,1]-300
+    k=y[10,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -55,7 +56,7 @@ while (err>0.00000001):
 #Qb=-2*(3000*(300-ans)+2.5*(300**2-(ans)**2)+2*10**(-2)/3*(300**3-(ans)**3))
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[9,0],400)
+[Qa,err]=quad(qA,y[10,0],400)
 #print Qa
 
 def qB(T):
@@ -71,32 +72,32 @@ print percent_error1
 
 
 n=20
-a1=320
-t=linspace(0.0,9.0,20)
+a1=307
+t=linspace(0.0,10.0,21)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[19,1]-300
+F1=y[20,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,20)
+a2=308
+t=linspace(0.0,10.0,21)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[19,1]-300
+F2=y[20,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,20)
+    t=linspace(0.0,10.0,21)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[19,1]-300
+    F3=y[20,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[19,1]-300
+    k=y[20,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -108,7 +109,7 @@ while (err>0.00000001):
 #print Qb
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[19,0],400)
+[Qa,err]=quad(qA,y[20,0],400)
 #print Qa
 
 def qB(T):
@@ -121,32 +122,32 @@ print percent_error2
 
 
 n=30
-a1=320
-t=linspace(0.0,9.0,30)
+a1=307
+t=linspace(0.0,10.0,31)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[29,1]-300
+F1=y[30,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,30)
+a2=308
+t=linspace(0.0,10.0,31)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[29,1]-300
+F2=y[30,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,30)
+    t=linspace(0.0,10.0,31)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[29,1]-300
+    F3=y[30,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[29,1]-300
+    k=y[30,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -158,7 +159,7 @@ while (err>0.00000001):
 #print Qb
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[29,0],400)
+[Qa,err]=quad(qA,y[30,0],400)
 #print Qa
 
 def qB(T):
@@ -170,32 +171,32 @@ percent_error3=(Qb-Qa)/Qa*100
 print percent_error3
 
 n=50
-a1=320
-t=linspace(0.0,9.0,50)
+a1=307
+t=linspace(0.0,10.0,51)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[49,1]-300
+F1=y[50,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,50)
+a2=308
+t=linspace(0.0,10.0,51)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[49,1]-300
+F2=y[50,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,50)
+    t=linspace(0.0,10.0,51)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[49,1]-300
+    F3=y[50,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[49,1]-300
+    k=y[50,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -207,7 +208,7 @@ while (err>0.00000001):
 #print Qb
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[49,0],400)
+[Qa,err]=quad(qA,y[50,0],400)
 #print Qa
 
 def qB(T):
@@ -219,32 +220,32 @@ percent_error4=(Qb-Qa)/Qa*100
 print percent_error4
 
 n=70
-a1=320
-t=linspace(0.0,9.0,70)
+a1=307
+t=linspace(0.0,10.0,71)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[69,1]-300
+F1=y[70,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,70)
+a2=308
+t=linspace(0.0,10.0,71)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[69,1]-300
+F2=y[70,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,70)
+    t=linspace(0.0,10.0,71)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[69,1]-300
+    F3=y[70,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[69,1]-300
+    k=y[70,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -256,7 +257,7 @@ while (err>0.00000001):
 #print Qb
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[69,0],400)
+[Qa,err]=quad(qA,y[70,0],400)
 #print Qa
 
 def qB(T):
@@ -268,32 +269,32 @@ percent_error5=(Qb-Qa)/Qa*100
 print percent_error5
 
 n=100
-a1=320
-t=linspace(0.0,9.0,100)
+a1=307
+t=linspace(0.0,10.0,101)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
-F1=y[99,1]-300
+F1=y[100,1]-300
 #print F1
 
-a2=310
-t=linspace(0.0,9.0,100)
+a2=308
+t=linspace(0.0,10.0,101)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
-F2=y[99,1]-300
+F2=y[100,1]-300
 #print F2
 err=1
 while (err>0.00000001):  
     a3=a2-(a2-a1)*F2/(F2-F1)
-    t=linspace(0.0,9.0,100)
+    t=linspace(0.0,10.0,101)
     yinitial=([400,a3])
     y=odeint(deriv,yinitial,t)
-    F3=y[99,1]-300
+    F3=y[100,1]-300
     ans=a2
     F1=F2
     F2=F3
     a1=a2
     a2=a3
-    k=y[99,1]-300
+    k=y[100,1]-300
     if k < 0:
         k= -1 * k
     err=k  
@@ -305,7 +306,7 @@ while (err>0.00000001):
 #print Qb
 def qA(T):
     return 4000+10*T+10**(-2)*T**2
-[Qa,err]=quad(qA,y[99,0],400)
+[Qa,err]=quad(qA,y[100,0],400)
 #print Qa
 
 def qB(T):
@@ -320,7 +321,6 @@ yerr=[percent_error1,percent_error2,percent_error3,percent_error4,percent_error5
 n=[10,20,30,50,70,100]
 #figure()
 plt.plot(n,yerr)
-xlabel('n')
-ylabel('% error')
+plt.xlabel('n')
+plt.ylabel('% error')
 plt.show()
-plt.pause

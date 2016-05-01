@@ -10,6 +10,7 @@ from scipy import array
 import numpy
 from pylab import *
 from scipy.integrate import quad
+import matplotlib.pyplot as plt
 def deriv(y,t):
     U=100
     P=1
@@ -20,14 +21,14 @@ def deriv(y,t):
     return array([-U*P/(mA*(4000+10*y[0]+10**(-2)*y[0]**2))*(y[0]-y[1]) , -U*P/(mB*(3000+5*y[1]+2*10**(-2)*y[1]**2))*(y[0]-y[1])])
 
 ### FOR N=10
-a1=320
+a1=307
 t=linspace(0.0,9.0,10)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[9,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,10)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -71,14 +72,14 @@ print percent_error1
 
 
 n=20
-a1=320
+a1=307
 t=linspace(0.0,9.0,20)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[19,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,20)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -121,14 +122,14 @@ print percent_error2
 
 
 n=30
-a1=320
+a1=307
 t=linspace(0.0,9.0,30)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[29,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,30)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -170,14 +171,14 @@ percent_error3=(Qb-Qa)/Qa*100
 print percent_error3
 
 n=50
-a1=320
+a1=307
 t=linspace(0.0,9.0,50)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[49,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,50)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -219,14 +220,14 @@ percent_error4=(Qb-Qa)/Qa*100
 print percent_error4
 
 n=70
-a1=320
+a1=307
 t=linspace(0.0,9.0,70)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[69,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,70)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -268,14 +269,14 @@ percent_error5=(Qb-Qa)/Qa*100
 print percent_error5
 
 n=100
-a1=320
+a1=307
 t=linspace(0.0,9.0,100)
 yinitial=([400,a1])
 y=odeint(deriv,yinitial,t)
 F1=y[99,1]-300
 #print F1
 
-a2=310
+a2=308
 t=linspace(0.0,9.0,100)
 yinitial=([400,a2])
 y=odeint(deriv,yinitial,t)
@@ -320,7 +321,6 @@ yerr=[percent_error1,percent_error2,percent_error3,percent_error4,percent_error5
 n=[10,20,30,50,70,100]
 #figure()
 plt.plot(n,yerr)
-xlabel('n')
-ylabel('% error')
+plt.xlabel('n')
+plt.ylabel('% error')
 plt.show()
-plt.pause
